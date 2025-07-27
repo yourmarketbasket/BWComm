@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.bwcomm.ui.activities.ChatActivity
-import com.example.bwcomm.ui.fragments.DeviceListFragment
+import com.example.bwcomm.ui.fragments.DeviceListScreen
 import com.example.bwcomm.ui.theme.BWCommTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavHost(navController = navController, startDestination = "device_list") {
                     composable("device_list") {
-                        DeviceListFragment()
+                        DeviceListScreen(navController = navController)
                     }
                     composable("chat/{deviceId}") { backStackEntry ->
                         val deviceId = backStackEntry.arguments?.getString("deviceId")

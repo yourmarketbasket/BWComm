@@ -1,17 +1,22 @@
-// ChatActivity.kt
 package com.example.bwcomm
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.Button
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.bwcomm.ui.theme.BWCommTheme
+import models.Message
 import viewmodels.ChatViewModel
 
 class ChatActivity : ComponentActivity() {
@@ -36,6 +41,16 @@ class ChatActivity : ComponentActivity() {
             }
             context.startActivity(intent)
         }
+    }
+}
+
+@Composable
+fun MessageItem(message: Message) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = if (message.isMe) Arrangement.End else Arrangement.Start
+    ) {
+        Text(text = message.content)
     }
 }
 
