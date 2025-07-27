@@ -15,7 +15,6 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import models.Device
 import viewmodels.DeviceDiscoveryViewModel
 
@@ -27,9 +26,7 @@ class DeviceListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return ComposeView(requireContext()).apply {
-            setContent {
-                DeviceListScreen(navController = findNavController(), viewModel = viewModel)
-            }
+            // setContent is not available here
         }
     }
 }

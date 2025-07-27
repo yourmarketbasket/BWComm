@@ -3,14 +3,17 @@ package com.example.bwcomm
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.bwcomm.ui.activities.ChatActivity
 import com.example.bwcomm.ui.fragments.DeviceListScreen
 import com.example.bwcomm.ui.theme.BWCommTheme
+import viewmodels.DeviceDiscoveryViewModel
 
 class MainActivity : ComponentActivity() {
+    private val deviceDiscoveryViewModel: DeviceDiscoveryViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -18,7 +21,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 NavHost(navController = navController, startDestination = "device_list") {
                     composable("device_list") {
-                        DeviceListScreen(navController = navController)
+                        DeviceListScreen(navController = navController, viewModel = deviceDiscoveryViewModel)
                     }
                     composable("chat/{deviceId}") { backStackEntry ->
                         val deviceId = backStackEntry.arguments?.getString("deviceId")
