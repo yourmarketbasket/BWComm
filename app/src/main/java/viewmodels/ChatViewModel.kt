@@ -20,7 +20,9 @@ class ChatViewModel : ViewModel() {
     private fun observeMessages() {
         viewModelScope.launch {
             messagingService.receivedMessages.collect { message ->
-                _messages.value = _messages.value + message
+                message?.let {
+                    _messages.value = _messages.value + it
+                }
             }
         }
     }

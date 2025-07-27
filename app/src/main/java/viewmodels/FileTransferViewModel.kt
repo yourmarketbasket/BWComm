@@ -21,8 +21,10 @@ class FileTransferViewModel : ViewModel() {
     private fun observeFileTransfers() {
         viewModelScope.launch {
             fileTransferService.fileTransferUpdates.collect { fileTransfer ->
-                val updatedList = _fileTransfers.value.filterNot { it.fileName == fileTransfer.fileName }
-                _fileTransfers.value = updatedList + fileTransfer
+                fileTransfer?.let {
+                    val updatedList = _fileTransfers.value.filterNot { it.fileName == fileTransfer.fileName }
+                    _fileTransfers.value = updatedList + fileTransfer
+                }
             }
         }
     }

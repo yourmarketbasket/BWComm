@@ -3,9 +3,8 @@ package com.example.bwcomm.ui.fragments
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
-import androidx.fragment.app.Fragment
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 
 class FilePickerFragment : Fragment() {
 

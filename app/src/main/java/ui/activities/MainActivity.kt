@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.bwcomm.ui.activities.ChatActivity
 import com.example.bwcomm.ui.fragments.DeviceListScreen
 import com.example.bwcomm.ui.theme.BWCommTheme
 
